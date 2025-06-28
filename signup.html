@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: rgb(220, 218, 218);
+          /* linear-gradient(rgba(10, 25, 41, 0.85), rgba(10, 25, 41, 0.9)); */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: navajowhite; 
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 720px;
+      padding: 25px 50px;
+      color: white;
+    }
+
+    .logo {
+      text-align: center;
+    }
+
+    .logo img {
+      max-height: 80px;
+      border-radius: 60%;
+    }
+
+    h1 {
+      color: #000000;
+      font-size: 24px;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .subtitle {
+      color: #808080;
+      font-size: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .subtitle a {
+      color: #ff1744;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .subtitle a:hover {
+      text-decoration: underline;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #000000;
+      font-size: 14px;
+      margin-bottom: 5px;
+      padding-left: 2px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    input[type="tel"],
+    textarea,
+    select {
+      padding: 8px;
+      border: 1px solid #442222;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 500;
+      background: #ffffff;
+      color: rgb(0, 0, 0);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #ff7c17;
+      box-shadow: 0 0 0 2px rgba(255, 178, 23, 0.226);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    .gender-options {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .gender-options input {
+      margin-right: 5px;
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      margin: 15px 0 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #cccccc;
+      line-height: 1.4;
+    }
+
+    .terms input {
+      margin-right: 8px;
+      margin-top: 3px;
+    }
+
+    .terms a {
+      color: #ff1744;
+      text-decoration: none;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .signup-btn {
+      background-color: #ff1744;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .signup-btn:hover {
+      background-color: #e00032;
+    }
+
+    .divider {
+      text-align: center;
+      position: relative;
+      margin: 20px 0;
+      color: #6d6d6d;
+      font-size: 13px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      position: absolute;
+      top: 60%;
+      height: 1px;
+      background: #444;
+    }
+
+    .divider::before {
+      left: 0;
+      right: 56%;
+      margin-right: 10px;
+    }
+
+    .divider::after {
+      left: 56%;
+      right: 0;
+      margin-left: 10px;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      flex: 1;
+      background: #3a1a1e;
+      border: 1px solid #442222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      color: white;
+    }
+
+    .social-btn:hover {
+      background-color: #4b2225;
+    }
+
+    .social-btn i {
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    .google-btn {
+      color: #05f7bb;
+    }
+
+    .apple-btn {
+      color: #ffffff;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo" onclick="window.location.href='homepage.html'" style="cursor: pointer;">
+      <img src="logo.png" alt="Logo" />
+    </div>
+    <h1>Create Account</h1>
+    <p class="subtitle">Already have an account? <a href="login.html">Login here</a></p>
+
+    <form action="register.php" method="post" id="signupForm" onsubmit="return validateForm()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName"  >
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName"  >
+        </div>
+
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob"  >
+        </div>
+
+        <div class="form-group">
+          <label for="usertype">User Type</label>
+          <select id="usertype" name="usertype"  >
+            <option value="">Select...</option>
+            <option value="Admin">Admin</option>
+            <option value="Customer">Customer</option>
+            <option value="CarOwner">Car Owner</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="address">Address</label>
+          <textarea id="address" name="address"  ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone"  >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email"  >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password"  >
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword"  >
+        </div>
+      </div>
+
+      <div class="terms">
+        <input type="checkbox" id="terms" name="terms"  >
+        <label for="terms">I agree to the <a href="#">terms & conditions</a></label>
+      </div>
+
+      <button type="submit" class="btn signup-btn" name="submit" >Create account</button>
+    </form>
+
+    <div class="divider">Or register with</div>
+
+    <div class="social-login">
+      <div class="social-btn google-btn">
+        <i class="fab fa-google"></i>
+        <span>Google</span>
+      </div>
+      <div class="social-btn apple-btn">
+        <i class="fab fa-apple"></i>
+        <span>Apple</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">  </script>
+</body>
+</html>
