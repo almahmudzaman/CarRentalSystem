@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Login Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #eeeff5 0%, #d0b4ec 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      width: 900%;
+      max-width: 900px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .welcome-section {
+      flex: 1;
+      background: linear-gradient(rgba(50, 50, 150, 0.7), rgba(80, 20, 120, 0.8)), url('https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .welcome-content {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .welcome-section h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .welcome-section p {
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 30px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .form-header h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .form-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .form-container {
+      width: 100%;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #764ba2;
+      box-shadow: 0 0 0 2px rgba(118, 75, 162, 0.2);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 12px;
+      top: 37px;
+      color: #777;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember input {
+      margin-right: 8px;
+    }
+
+    .forgot-password {
+      color: #764ba2;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .forgot-password:hover {
+      color: #5a2d8a;
+      text-decoration: underline;
+    }
+
+    .buttons {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .signin {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .signin:hover {
+      background: linear-gradient(to right, #5a6fd8, #5a2d8a);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+    }
+
+    .back {
+      background: #eee;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .back:hover {
+      background: #ddd;
+    }
+
+    .social-login {
+      text-align: center;
+      margin: 20px 0 15px;
+      position: relative;
+    }
+
+    .social-login p {
+      color: #777;
+      background: white;
+      padding: 0 10px;
+      display: inline-block;
+      z-index: 1;
+      position: relative;
+    }
+
+    .social-login::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #ddd;
+      z-index: 0;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f7ff;
+      color: #555;
+      font-size: 18px;
+      border: 1px solid #ddd;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .social-icon:hover {
+      background: #764ba2;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    .signup-link a {
+      color: #764ba2;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .signup-link a:hover {
+      color: #5a2d8a;
+      text-decoration: underline;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+      <div class="logo">RentalCar</div>
+      <div class="welcome-content">
+        <h1>Welcome back to RentalCar!</h1>
+        <p>Your journey starts with the best cars. Login now to access your dashboard and manage your rentals.</p>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      <div class="form-header">
+        <h2>SIGN IN</h2>
+        <p>Login to continue renting the best cars at the best rates</p>
+      </div>
+
+      <div class="form-container">
+        <form id="loginForm" action="login.php" method="POST" onsubmit="return validateLoginForm()">
+          <div class="input-group">
+            <label for="email">Email address</label>
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+
+          <div class="options">
+            <div class="remember">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="buttons signin">SIGN IN</button>
+          <button type="button" class="buttons back" onclick="history.back()">← Back</button>
+        </form>
+
+        <div class="social-login">
+          <p>Sign in with</p>
+        </div>
+
+        <div class="social-icons">
+          <div class="social-icon"><i class="fab fa-google"></i></div>
+          <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+          <div class="social-icon"><i class="fab fa-twitter"></i></div>
+          <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+        </div>
+
+        <div class="signup-link">
+          <p>Don't have an account? <a href="#">SIGN UP</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">  </script>
+
+</body>
+</html>
